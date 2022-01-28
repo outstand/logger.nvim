@@ -10,7 +10,7 @@ else
 end
 
 local source = string.sub(info.source, 2)
-local file_name = vim.api.nvim_call_function('fnamemodify', {source, ':h:h:p'}) .. os_sep .. 'log.lua'
+local file_name = vim.api.nvim_call_function('fnamemodify', {source, ':h:h:p'}) .. os_sep .. 'logger.lua'
 
 local log = loadfile(file_name)()
 
