@@ -1,4 +1,4 @@
-# vlog.nvim
+# logger.nvim
 
 ### _A logger for neovim_
 
@@ -36,7 +36,7 @@ The following values are configurable:
 ```lua
 local default_config = {
   -- Name of the plugin. Prepended to log messages
-  plugin = 'vlog.nvim',
+  plugin = 'logger',
 
   -- Should print the output to neovim while running
   use_console = true,
@@ -72,12 +72,12 @@ There are two ways to install.
 
 ## Standalone
 
-The first is simply copying the zero-dependency `log.lua` file into your project. It is recommended that you place this file within a subdirectory of your lua project. After pasting into your project, change the values in the `config` table at the top of the file.
+The first is simply copying the zero-dependency `logger.lua` file into your project. It is recommended that you place this file within a subdirectory of your lua project. After pasting into your project, change the values in the `config` table at the top of the file.
 
-For example, for `my_cool_plugin`, you should place `log.lua` in `my_cool_plugin/log.lua` and require it with `require('my_cool_plugin.log')`.
+For example, for `my_cool_plugin`, you should place `logger.lua` in `my_cool_plugin/logger.lua` and require it with `require('my_cool_plugin.logger')`.
 
 ```lua
-local log = require('my_cool_plugin.log')
+local log = require('my_cool_plugin.logger')
 
 log.info("Doing some logging")
 ```
@@ -86,16 +86,16 @@ log.info("Doing some logging")
 
 You can also install this as a plugin (to get any updates) by using your favorite neovim plugin manager.
 
-After doing so, you can use `log.new` to generate a new logger for your plugin.
+After doing so, you can use `logger.new` to generate a new logger for your plugin.
 
 ```lua
--- In my_plugin/log.lua
-return require('vlog').new {
+-- In my_plugin/logger.lua
+return require('logger').new {
     plugin = 'my_cool_plugin',
 }
 
 -- In my_plug/other_file.lua
-local log = require('my_plugin.log')
+local log = require('my_plugin.logger')
 
 log.info("Doing some logging stuff")
 ```
