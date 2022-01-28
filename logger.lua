@@ -1,7 +1,8 @@
--- log.lua
+-- logger.lua
 --
 -- Inspired by rxi/log.lua
 -- Modified by tjdevries and can be found at github.com/tjdevries/vlog.nvim
+-- Modified again by ryansch
 --
 -- This library is free software; you can redistribute it and/or modify it
 -- under the terms of the MIT license. See LICENSE for details.
@@ -9,7 +10,7 @@
 -- User configuration section
 local default_config = {
   -- Name of the plugin. Prepended to log messages
-  plugin = 'vlog.nvim',
+  plugin = 'logger',
 
   -- Should print the output to neovim while running
   use_console = true,
@@ -45,7 +46,7 @@ local unpack = unpack or table.unpack
 log.new = function(config, standalone)
   config = vim.tbl_deep_extend("force", default_config, config)
 
-  local outfile = string.format('%s/%s.log', vim.api.nvim_call_function('stdpath', {'data'}), config.plugin)
+  local outfile = string.format('%s/%s.log', vim.api.nvim_call_function('stdpath', {'cache'}), config.plugin)
 
   local obj
   if standalone then
@@ -127,6 +128,8 @@ log.new = function(config, standalone)
       fp:write(str)
       fp:close()
     end
+
+    return ...
   end
 
   for i, x in ipairs(config.modes) do
@@ -146,6 +149,8 @@ log.new = function(config, standalone)
       end)
     end
   end
+
+  return obj
 end
 
 log.new(default_config, true)

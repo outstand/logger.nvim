@@ -1,4 +1,4 @@
--- For more information, see `log.lua` and the README for this repo.
+-- For more information, see `logger.lua` and the README for this repo.
 -- TODO: Add doc/vlog.txt
 local info = debug.getinfo(1, 'S')
 
